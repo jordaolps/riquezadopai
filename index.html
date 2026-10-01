@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riqueza do Pai | Consultoria Financeira</title>
+    
+    <!-- Fonte elegante do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ================= PALETA DE CORES & CONFIGURAÇÕES ================= */
+        :root {
+            --preto: #111111;
+            --preto-claro: #1A1A1A;
+            --branco: #FAFAFA;
+            --branco-puro: #FFFFFF;
+            --dourado: #D4AF37;
+            --dourado-hover: #b8962c;
+            --vinho: #671024;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--branco);
+            color: var(--preto);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif; /* Fonte mais sofisticada para títulos */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ================= CABEÇALHO (HEADER) ================= */
+        header {
+            background-color: var(--preto);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            color: var(--dourado);
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--branco);
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--dourado);
+        }
+
+        /* Botão Dourado Padrão */
+        .btn-dourado {
+            background-color: var(--dourado);
+            color: var(--preto);
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: background 0.3s, transform 0.2s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-dourado:hover {
+            background-color: var(--dourado-hover);
+            transform: scale(1.05);
+        }
+
+        /* ================= SEÇÃO 1: HERO (INÍCIO) ================= */
+        #inicio {
+            background-color: var(--preto);
+            color: var(--branco);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            margin-top: 60px;
+        }
+
+        #inicio h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--dourado);
+        }
+
+        #inicio p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* ================= SEÇÃO 2: SERVIÇOS ================= */
+        #servicos {
+            padding: 100px 5%;
+            background-color: var(--branco-puro);
+            text-align: center;
+        }
+
+        .titulo-secao {
+            font-size: 2.5rem;
+            color: var(--preto);
+            margin-bottom: 20px;
+        }
+
+        .linha-divisoria {
+            width: 80px;
+            height: 4px;
+            background-color: var(--vinho);
+            margin: 0 auto 50px auto;
+        }
+
+        .cards-servicos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: var(--branco);
+            padding: 40px 30px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-bottom: 5px solid var(--vinho);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            color: var(--vinho);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* ================= SEÇÃO 3: AFILIADOS / RECOMENDAÇÕES ================= */
+        #recomendacoes {
+            padding: 100px 5%;
+            background-color: var(--preto-claro);
+            color: var(--branco);
+            text-align: center;
+        }
+
+        #recomendacoes .titulo-secao {
+            color: var(--branco);
+        }
+
+        #recomendacoes .linha-divisoria {
+            background-color: var(--dourado);
+        }
+
+        .vitrine {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .item-afiliado {
+            background-color: var(--preto);
+            padding: 30px;
+            border-radius: 8px;
+            width: 300px;
+            border: 1px solid #333;
+        }
+
+        .item-afiliado h3 {
+            color: var(--dourado);
+            margin-bottom: 15px;
+        }
+
+        .item-afiliado p {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* ================= SEÇÃO 4: SOBRE ================= */
+        #sobre {
+            padding: 100px 5%;
+            background-color: var(--vinho);
+            color: var(--branco);
+            text-align: center;
+        }
+
+        #sobre .titulo-secao {
+            color: var(--branco);
+        }
+
+        #sobre .linha-divisoria {
+            background-color: var(--dourado);
+        }
+
+        .sobre-container {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* ================= RODAPÉ ================= */
+        footer {
+            background-color: var(--preto);
+            color: var(--branco);
+            text-align: center;
+            padding: 40px 5%;
+            border-top: 2px solid var(--dourado);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* ================= RESPONSIVIDADE (CELULARES) ================= */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            #inicio h1 {
+                font-size: 2.2rem;
+            }
+            .cards-servicos, .vitrine {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="logo">Riqueza do Pai</div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#servicos">Consultoria</a></li>
+                <li><a href="#recomendacoes">Ferramentas</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SEÇÃO 1: INÍCIO -->
+    <section id="inicio">
+        <h1>Organização que gera lucro.</h1>
+        <p>A consultoria financeira inteligente para Pequenas e Médias Empresas. Estruture seu caixa, corte gastos desnecessários e veja a cor do seu dinheiro.</p>
+        <a href="https://wa.me/55DDDNUMERO?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20consultoria" target="_blank" class="btn-dourado">Quero organizar minha empresa</a>
+    </section>
+
+    <!-- SEÇÃO 2: SERVIÇOS -->
+    <section id="servicos">
+        <h2 class="titulo-secao">Como transformamos seu negócio</h2>
+        <div class="linha-divisoria"></div>
+        
+        <div class="cards-servicos">
+            <div class="card">
+                <h3>Raio-X Financeiro</h3>
+                <p>Análise completa das finanças da sua empresa para descobrir para onde seu dinheiro está indo e como estancar perdas.</p>
+            </div>
+            <div class="card">
+                <h3>Redução de Custos</h3>
+                <p>Otimização de processos e renegociação inteligente. Economizamos recursos para aumentar a sua margem de lucro.</p>
+            </div>
+            <div class="card">
+                <h3>Estruturação de Caixa</h3>
+                <p>Criamos processos e fluxo de caixa claros, gerando previsibilidade e tranquilidade para o dono do negócio.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 3: AFILIADOS (FERRAMENTAS) -->
+    <section id="recomendacoes">
+        <h2 class="titulo-secao">Ecossistema de Riqueza</h2>
+        <p style="margin-bottom: 40px;">As ferramentas e soluções que eu uso e recomendo para o sucesso financeiro.</p>
+        <div class="linha-divisoria"></div>
+
+        <div class="vitrine">
+            <!-- ITEM AFILIADO 1 -->
+            <div class="item-afiliado">
+                <h3>Gestão Empresarial (ERP)</h3>
+                <p>O melhor sistema para organizar vendas, estoque e emitir notas fiscais com facilidade.</p>
+                <a href="SEU_LINK_DE_AFILIADO_AQUI" target="_blank" class="btn-dourado">Acessar Sistema</a>
+            </div>
+
+            <!-- ITEM AFILIADO 2 -->
+            <div class="item-afiliado">
+                <h3>Conta PJ Recomendada</h3>
+                <p>Sem taxas abusivas e com crédito inteligente para fazer sua empresa girar de forma saudável.</p>
+                <a href="SEU_LINK_DE_AFILIADO_AQUI" target="_blank" class="btn-dourado">Abrir Conta</a>
+            </div>
+
+            <!-- ITEM AFILIADO 3 -->
+            <div class="item-afiliado">
+                <h3>Leituras Obrigatórias</h3>
+                <p>Livros essenciais sobre inteligência financeira e gestão que todo empresário precisa ler.</p>
+                <a href="SEU_LINK_DE_AFILIADO_AQUI" target="_blank" class="btn-dourado">Ver Livros</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 4: SOBRE -->
+    <section id="sobre">
+        <h2 class="titulo-secao">Sobre a Riqueza do Pai</h2>
+        <div class="linha-divisoria"></div>
+        <div class="sobre-container">
+            <p>A <strong>Riqueza do Pai</strong> nasceu com uma missão clara: ajudar empreendedores a assumirem o controle do próprio negócio. Acreditamos que a prosperidade vem da organização, da disciplina e de processos financeiros inteligentes.</p>
+            <br>
+            <p>Trabalhamos lado a lado com pequenas e médias empresas para transformar o caos em processos lucrativos, garantindo que o seu esforço como empresário se transforme em resultados reais.</p>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="logo" style="font-size: 1.5rem; margin-bottom: 15px;">Riqueza do Pai</div>
+        <p>contato@riquezadopai.com.br</p>
+        <p>&copy; 2026 Riqueza do Pai. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- JAVASCRIPT: Animação suave para links do menu -->
+    <script>
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                // Ajuste por causa do cabeçalho fixo
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
